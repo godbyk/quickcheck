@@ -1059,7 +1059,7 @@ class Property<A, B> : public PropertyBase<A, B, Unit, Unit, Unit> {
 template<class A, class B>
 void Property<A, B>::addFixed(const A& a, const B& b)
 {
-   _addFixed(a, b, UNIT, UNIT, UNIT);
+   this->_addFixed(a, b, UNIT, UNIT, UNIT);
 }
 
 template<class A, class B>
@@ -1208,7 +1208,7 @@ class Property<A> : public PropertyBase<A, Unit, Unit, Unit, Unit> {
 template<class A>
 void Property<A>::addFixed(const A& a)
 {
-   _addFixed(a, UNIT, UNIT, UNIT, UNIT);
+   this->_addFixed(a, UNIT, UNIT, UNIT, UNIT);
 }
 
 template<class A>
