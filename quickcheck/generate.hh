@@ -67,9 +67,9 @@ A generateInRange(A low, A high)
 template<class A, class Iter>
 A oneOf(Iter first, Iter last)
 {
-   size_t len = std::distance(first, last);
+   typename std::iterator_traits<Iter>::difference_type len = std::distance(first, last);
    assert(len > 0);
-   size_t index = generateInRange(size_t(0), len - 1);
+   size_t index = generateInRange(static_cast<size_t>(0), static_cast<size_t>(len - 1));
    Iter i;
    for (i = first; index != 0; ++i)
       --index;
