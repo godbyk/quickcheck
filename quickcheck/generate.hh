@@ -52,7 +52,8 @@ template<class A>
 A generateInRange(A low, A high)
 {
    assert(low <= high);
-   A offset = static_cast<A>(double(rand()) / RAND_MAX * (high - low + 1));
+   A offset = static_cast<A>(double(rand()) / RAND_MAX
+                             * (double(high) - double(low) + 1));
    return static_cast<A>(low + offset);
 }
 
@@ -67,7 +68,8 @@ A generateInRange(A low, A high)
 template<class A, class Iter>
 A oneOf(Iter first, Iter last)
 {
-   typename std::iterator_traits<Iter>::difference_type len = std::distance(first, last);
+   assert(std::distance(first, last) > 0);
+   size_t len = size_t(std::distance(first, last));
    assert(len > 0);
    size_t index = generateInRange(static_cast<size_t>(0), static_cast<size_t>(len - 1));
    Iter i;
@@ -233,7 +235,7 @@ static inline void generate(size_t n, float& out)
  */
 static inline void generate(size_t n, double& out)
 {
-   out = double(rand()) / RAND_MAX * 2 * n - n;
+   out = double(rand()) / RAND_MAX * 2 * double(n) - double(n);
 }
 
 /**
